@@ -19,6 +19,16 @@ Friends es una aplicación de citas minimalista, centrada en descubrir personas 
 11. **Firestore** será el almacenamiento definitivo. **Todavía no integrarlo**. Usar JSON local de colecciones de prueba.
 12. **Primera iteración**: bocetos funcionales de navegación, registro, perfil, filtros, visibilidad, descubrimiento, solicitudes y chats; priorizar flujo sobre estética.
 
+## Decisiones adicionales (22 noviembre 2026)
+13. **Buscar es el home**: eliminar Inicio del menú, redirigir la ruta antigua /home a /discover.
+14. **Filtros de búsqueda dentro de Buscar**, no obligar a ir a Ajustes.
+15. **Filtros de conversaciones**: búsqueda por nombre y opciones de listado; no inventar estados de lectura inexistentes.
+16. **Rechazo múltiple de solicitudes** mediante selección de varias y acción de rechazo en lote.
+17. **Rechazos direccionales**: al rechazar a alguien, no debe aparecer más en las búsquedas del usuario que rechazó; si otra persona me rechaza, tampoco debe aparecerme a mí. No mostrar repetidamente perfiles descartados.
+18. **Dos motivos de rechazo**: marcar "No es mi tipo" desde Buscar, o rechazar su primer mensaje. Ambos se guardan como rechazo del usuario hacia esa persona.
+19. **Dar otra oportunidad**: control en filtros de Buscar para volver a mostrar perfiles rechazados por mí. Nunca anula rechazos que otros me hicieron ni bloqueos.
+20. **Boceto sin backend**: los rechazos del otro lado no pueden conocerse realmente; se prevé `rejectedMe` en modelo demo para probar el caso. No afirmar reciprocidad segura en producción sin backend.
+
 ## Arquitectura y despliegue
 - Ionic Angular standalone, TypeScript, Capacitor, Firebase Authentication planificado, Firestore planificado.
 - Repositorio: `zariweyo/friends`; rama principal `main`.
@@ -34,16 +44,16 @@ Friends es una aplicación de citas minimalista, centrada en descubrir personas 
 ## Navegación del boceto
 - `#/login`: acceso demo.
 - `#/register`: formulario de alta de perfil demo.
-- `#/home`: portada.
-- `#/discover`: lista de personas con filtros y detalle.
-- `#/requests`: solicitudes de primer mensaje, aceptar/rechazar.
-- `#/chats`: chats de conversaciones aceptadas.
+- `#/home`: redirección a búsqueda; se elimina la portada Inicio.
+- `#/discover`: home principal, lista de personas con filtros en la propia pantalla y detalle.
+- `#/requests`: solicitudes de primer mensaje, aceptar/rechazar individualmente o rechazar varias marcadas.
+- `#/chats`: chats de conversaciones aceptadas, con filtros de nombre y orden; no leídos pendiente de modelo real.
 - `#/profile`: perfil propio, una foto, nombre, edad, población y sexo.
 - `#/settings`: búsqueda, reglas de recepción, visibilidad global/localidades y bloqueos.
 - Navegación común desde la zona autenticada.
 
 ## Contrato de datos provisional
-Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `cities`. Identificadores de documento string. Los modelos son preliminares, no un diseño definitivo de Firestore. El demo no garantiza seguridad ni persistencia.
+Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `cities`. Estado de rechazo demo: `rejectedByMe` (map persona -> motivo), `rejectedMe` (IDs de quienes rechazaron al usuario), `secondChance` (opción de visualización). En Firestore deberán modelarse eventos de rechazo privados y direccionales. Identificadores de documento string. Los modelos son preliminares, no un diseño definitivo de Firestore. El demo no garantiza seguridad ni persistencia.
 
 ## Seguridad y privacidad antes de producción
 - App para mayores de 18 años, definir controles de edad, denuncias, prevención de spam y abuso.
@@ -64,3 +74,4 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 - 2026-11-22: scaffold Ionic Angular y Firebase planificado; login fake, portada, GitHub Pages manual.
 - 2026-11-22: corregida dependencia Ionic a ^8.7.0; usuario confirma build.
 - 2026-11-22: boceto de pantallas y datos JSON demo; Firestore pospuesto.
+- 2026-11-22: Buscar pasa a home; filtros en Buscar y Conversaciones; rechazo múltiple, descarte por tipo/mensaje, exclusión de rechazados y opción Dar otra oportunidad.

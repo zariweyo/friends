@@ -6,10 +6,10 @@ Ionic + Angular standalone + Capacitor. Prototipo de app de citas, con navegaci�
 
 ## Estado
 - Login y registro fake; sin Firebase Authentication activo.
-- Pantallas de portada, búsqueda, detalle, solicitudes, chats, perfil y ajustes.
+- Buscar es el home. Pantallas de búsqueda (con filtros), detalle, solicitudes con rechazo múltiple, conversaciones con filtros, perfil y ajustes.
 - Colecciones demo en `src/assets/mock/collections.json`; sin Firestore, backend ni persistencia de datos de usuario.
 - Imágenes de ejemplo desde pravatar.cc; dependen de conexión a Internet.
-- Cambios en perfiles, solicitudes, filtros y chats solo en memoria.
+- Cambios en perfiles, solicitudes, rechazos, filtros y chats solo en memoria.
 - Distancia y última conexión simuladas; aún no hay GPS.
 - Las restricciones de visibilidad y recepción de mensajes no son seguridad real; no usar en producción.
 

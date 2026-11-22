@@ -18,3 +18,12 @@
 - Edad mínima 18+, denuncias, prevención de acoso y protección frente a spam.
 - Reglas Firestore/backend obligatorias para bloquear accesos, incluso manipulando el cliente.
 - Protección RGPD de geolocalización y orientación sexual.
+
+## Decisiones adicionales — 22 noviembre 2026
+11. Buscar es la pantalla de inicio; no existe pestaña Inicio.
+12. Filtros de búsqueda accesibles directamente desde Buscar.
+13. Conversaciones tiene filtros propios.
+14. Solicitudes permite seleccionar varias y rechazarlas de una vez.
+15. Rechazos privados y direccionales: al rechazar por "No es mi tipo" o por primer mensaje, esa persona deja de salir en mi búsqueda. Si alguien me rechaza, también desaparece de mis resultados. Evitar ciclos de reaparición.
+16. El botón "Dar otra oportunidad" de los filtros de Buscar permite volver a ver perfiles que **yo** rechacé; no levanta bloqueos ni rechazos recibidos.
+17. En el prototipo no hay backend, por lo que el rechazo remoto solo puede simularse y el estado se pierde al recargar.
