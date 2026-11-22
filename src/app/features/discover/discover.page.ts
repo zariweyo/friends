@@ -36,5 +36,5 @@ export class DiscoverPage{
  change(key:string,value:any){this.data.search.update(s=>({...s,[key]:value}));}
  submitReport(){const p=this.selected();if(!p)return;if(this.data.report(p.id,this.reportReason,this.reportDetails)){this.reporting.set(false);this.reportDetails='';alert('Denuncia enviada para revisión (demo).');}else alert(this.data.reportError());}
  reject(){const p=this.selected();if(p)this.data.rejectPerson(p.id,'not_my_type');this.selected.set(null);}
- request(){const p=this.selected();if(!p)return;const ok=this.data.request(p.id,this.draft);if(ok){this.draft='';this.selected.set(null);}else alert('No se puede enviar otra solicitud a este perfil.');}
+ request(){const p=this.selected();if(!p)return;const ok=this.data.request(p.id,this.draft);if(ok){this.draft='';this.selected.set(null);}else alert('No se puede enviar la solicitud. Comprueba si ya existe una solicitud o si has alcanzado el máximo de solicitudes pendientes.');}
 }

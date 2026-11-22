@@ -19,7 +19,7 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 <h2>Visibilidad</h2><section class="panel"><label><input type="checkbox" [ngModel]="data.visible()" (ngModelChange)="data.visible.set($event)" /> Visible globalmente</label>
 <p>Localidades donde NO apareces:</p>
 @for(c of data.cities;track c.id){<label><input type="checkbox" [checked]="data.hiddenCities().includes(c.id)" (change)="data.toggleCity(c.id)" /> {{c.name}}</label>}
-</section><h2>Personas bloqueadas</h2><section class="panel">
+</section><h2>Personas bloqueadas</h2><p><small>Bloquear cierra y archiva las conversaciones existentes e impide nuevos contactos. Las denuncias y mensajes denunciados se conservan para moderación.</small></p><section class="panel">
 @for(id of data.blocked();track id){<p>{{data.person(id)?.name}} <ion-button fill="clear" size="small" (click)="data.toggleBlocked(id)">Desbloquear</ion-button></p>}
 @if(data.blocked().length===0){<p>No tienes personas bloqueadas.</p>}</section>
 <p><small>Demo: los ajustes solo se guardan en memoria. La visibilidad y las reglas de mensajes todavía no se aplican desde un servidor.</small></p>

@@ -45,3 +45,11 @@
 28. Denunciar perfiles y mensajes; motivos tipificados y descripción. Denuncias separadas de las valoraciones, sin penalización automática.
 29. Estados de denuncia: pending, reviewing, resolved, dismissed. Registrar revisor y resolución.
 30. Prototipo sin autorización real: proteger roles y denuncias en backend antes de producción; privacidad, auditoría, sanciones y apelaciones pendientes.
+
+## Cierre de flujo — 22 noviembre 2026
+31. Cualquier participante puede finalizar una conversación; queda archivada y de solo lectura. Si ambos han escrito, la valoración sigue permitida.
+32. Rechazar solicitudes con o sin mensaje de cortesía (sin derecho a respuesta ni valoración). Rechazo múltiple sin mensaje.
+33. Retirar solicitudes pendientes; límite inicial demo de cinco solicitudes activas.
+34. Notificaciones internas y contador de no leídas; las notificaciones a otras cuentas requieren backend.
+35. Bloquear impide contacto, cierra y archiva chats, sin borrar evidencia de denuncias. Desbloquear no reabre conversaciones.
+36. No sancionar por dejar de responder. Limitar denuncias repetidas; moderación, apelaciones y controles de seguridad reales pendientes de backend.

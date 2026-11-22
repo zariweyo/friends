@@ -119,3 +119,15 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Corrección de compilación — 22 noviembre 2026
 - Corregido `setRole()` en `DemoDataService`: antes devolvía una unión de objeto y array desde `map()`, provocando TS2322/TS2339 en GitHub Actions run 45019803144. Ahora actualiza el elemento existente o agrega un único registro si falta. Pendiente confirmar mediante nuevo build manual.
+
+## Flujo completo — 22 noviembre 2026
+42. Conversaciones: estado `active`/`closed`, cierre unilateral con confirmación, archivo y lectura posterior. No se permite escribir después del cierre; se mantiene la valoración si ambos participaron. Filtro para mostrar chats archivados.
+43. Rechazo de solicitud: directo o con mensaje de cortesía opcional (máx. 300 caracteres). El mensaje de rechazo es unilateral y no abre chat ni habilita valoración. Rechazos múltiples siguen siendo sin mensaje.
+44. Solicitudes enviadas pendientes: retirada voluntaria (`withdrawn`); máximo cinco solicitudes pendientes simultáneas en la demo. No hay caducidad automática; no se permite reintentar contra un rechazo o bloqueo.
+45. Avisos internos: pantalla Notificaciones, contador de no leídos, marcar leídos; eventos demo de solicitud recibida, acciones locales de aceptar/rechazar, retirar, cerrar, bloquear, denunciar. **No simular entrega al otro usuario**: las notificaciones entre cuentas y push requieren backend.
+46. Bloqueo: impide nuevas solicitudes, cierra chats existentes, retira solicitudes pendientes entre ambas partes y oculta chats bloqueados. Desbloquear no reabre chats. Conservar mensajes/denuncias para moderación; no se elimina evidencia.
+47. Moderación: límite demo de tres denuncias por destinatario y denunciante; denunciar no afecta puntuación ni sanciona automáticamente. El silencio o la falta de respuesta no son infracciones. En producción añadir controles anti-multicuenta, rate limiting persistente, privacidad de denunciantes, revisión y apelaciones, y seguridad de evidencias.
+48. El prototipo usa memoria local; actualizar recarga el estado inicial. No hay backend, notificaciones remotas ni persistencia. Los estados de solicitudes y conversaciones están modelados en señales para evitar cambiar el esquema de datos base hasta integrar Firebase.
+
+## Historial adicional
+- 2026-11-22: cierre/archivo de chats, rechazo con mensaje, retirada de solicitudes, límite de pendientes, avisos internos, bloqueo con cierre de chats y protección básica de denuncias.

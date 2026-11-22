@@ -6,6 +6,7 @@ import { IonFooter,IonToolbar,IonButtons,IonButton } from '@ionic/angular/standa
 <ion-footer><ion-toolbar><ion-buttons class="nav">
 <ion-button (click)="refresh()" title="Recargar página">Actualizar</ion-button>
 <ion-button routerLink="/discover" routerLinkActive="active">Buscar</ion-button>
+<ion-button routerLink="/notifications" routerLinkActive="active">Avisos ({{data.unreadNotifications()}})</ion-button>
 <ion-button routerLink="/requests" routerLinkActive="active">Solicitudes</ion-button>
 <ion-button routerLink="/chats" routerLinkActive="active">Conversaciones</ion-button>
 <ion-button routerLink="/profile" routerLinkActive="active">Perfil</ion-button>
