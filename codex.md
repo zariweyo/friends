@@ -131,3 +131,13 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Historial adicional
 - 2026-11-22: cierre/archivo de chats, rechazo con mensaje, retirada de solicitudes, límite de pendientes, avisos internos, bloqueo con cierre de chats y protección básica de denuncias.
+
+## Diseño y UX — 22 noviembre 2026
+49. Nuevo sistema visual mobile-first: superficies blancas sobre fondo lavanda muy claro, primario violeta (#6556e8), acento coral, tipografía sistema, tarjetas redondeadas, sombras sutiles y controles táctiles grandes.
+50. Navegación inferior persistente con cinco destinos esenciales: Buscar, Solicitudes, Chats, Avisos y Perfil. Iconos SVG vectoriales propios mediante `AppIconComponent`, con estado activo y contadores para solicitudes/avisos.
+51. Acciones secundarias Ajustes, Moderación (según rol demo) y Actualizar en `AppPageActionsComponent` reutilizable al inicio de todas las pantallas autenticadas. Actualizar mantiene recarga completa; sin persistencia de datos demo.
+52. Rediseño de Buscar con hero editorial, lista de tarjetas con fotografía, metadatos y botón de descarte; estilos específicos para chat, solicitudes, perfil y acceso. Componentes globales de formularios y paneles unificados; soporte de safe area, focus visible y movimiento reducido.
+53. El diseño es exclusivamente CSS/SVG y no cambia el backend ni requiere recursos de imágenes nuevos. Los datos de prueba y la lógica de negocio siguen igual. Despliegue exclusivamente manual. Compilación pendiente de verificar.
+
+## Historial adicional
+- 2026-11-22: diseño visual moderno responsive, barra inferior SVG y acciones rápidas secundarias.

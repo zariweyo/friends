@@ -7,7 +7,35 @@
 @import '@ionic/angular/css/text-alignment.css';
 @import '@ionic/angular/css/text-transformation.css';
 @import '@ionic/angular/css/flex-utils.css';
-body{font-family:system-ui,sans-serif}
-label{display:block;margin:14px 0;font-size:14px;font-weight:500}
-label>input:not([type=checkbox]),label>select{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #aaa;border-radius:8px;background:var(--ion-background-color,#fff);color:var(--ion-text-color,#222)}
-label>input[type=checkbox]{margin-right:8px}
+
+:root{color-scheme:light;--surface:#fff;--ink:#20243a;--muted:#81879c;--line:#e9eaf3;--accent:#6556e8;--soft:#f1efff;--radius:22px;--shadow:0 10px 36px rgba(44,46,95,.055)}
+*{box-sizing:border-box}
+html,body{font-family:var(--ion-font-family);background:#f7f8fc}
+ion-content{--background:linear-gradient(180deg,#fbfaff 0%,#f7f8fc 55%,#f7f8fc 100%);--padding-bottom:104px}
+ion-header{box-shadow:none!important}
+ion-header ion-toolbar{--background:#fbfaff;--border-width:0;--min-height:64px;--padding-start:16px;--padding-end:16px}
+ion-title{font-size:19px;font-weight:800;letter-spacing:-.7px}
+ion-button{--border-radius:14px;--box-shadow:none;font-weight:700;letter-spacing:0;text-transform:none;min-height:40px}
+ion-button[fill=outline]{--border-color:#dedbf7;--color:#554bc3;--background:#fff}
+ion-button[fill=clear]{--color:#6556e8}
+ion-button[color=danger]{--ion-color-danger:#db6571}
+.page,.welcome{max-width:760px;margin:0 auto;padding:8px 4px 32px}
+.page>h2,.page>.heading h2,.page>h3{letter-spacing:-.9px;color:var(--ink);font-weight:800}
+.page>h2,.page>.heading h2{font-size:26px;line-height:1.18;margin:18px 0}
+.page>h3{font-size:19px;margin:26px 0 14px}
+.page>p,.page small{color:var(--muted);line-height:1.55}
+.panel,.rating{background:var(--surface);border:1px solid var(--line)!important;border-radius:var(--radius)!important;padding:20px!important;box-shadow:var(--shadow);margin:14px 0}
+.panel p{line-height:1.55}
+label{display:block;margin:16px 0;color:#454a61;font-size:13px;font-weight:700}
+input:not([type=checkbox]),select,textarea{display:block;width:100%;padding:13px 15px;margin-top:8px;border:1px solid #e3e5ef;border-radius:14px;background:#fff;color:var(--ink);font:inherit;font-size:14px;outline:none;transition:border-color .18s,box-shadow .18s}
+textarea{min-height:95px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:#9188f1;box-shadow:0 0 0 4px rgba(101,86,232,.10)}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);vertical-align:middle;margin-right:8px}
+select[multiple]{min-height:95px}
+button,ion-button,a,[role=button]{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid #968dff;outline-offset:3px}
+.empty-state{padding:36px 22px;text-align:center;background:#fff;border:1px dashed #dcdaf2;border-radius:22px;color:var(--muted)}
+.section-kicker{font-size:12px;text-transform:uppercase;letter-spacing:1.7px;font-weight:800;color:var(--accent)}
+.meta-chip{display:inline-flex;align-items:center;gap:5px;border-radius:100px;background:var(--soft);padding:6px 10px;color:#6556e8;font-size:12px;font-weight:700}
+@media(min-width:760px){.page{padding:14px 16px 42px}.page>h2,.page>.heading h2{font-size:32px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}

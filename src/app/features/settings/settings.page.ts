@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { IonContent,IonHeader,IonTitle,IonToolbar,IonButton } from '@ionic/angular/standalone';
 import { DemoDataService } from '../../core/services/demo-data.service';
 import { AppNavigationComponent } from '../../shared/components/app-navigation.component';
-@Component({standalone:true,imports:[FormsModule,IonContent,IonHeader,IonTitle,IonToolbar,IonButton,AppNavigationComponent],template:`
-<ion-header><ion-toolbar><ion-title>Preferencias y privacidad</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><div class="page">
+import { AppPageActionsComponent } from '../../shared/components/app-page-actions.component';
+@Component({standalone:true,imports:[FormsModule,IonContent,IonHeader,IonTitle,IonToolbar,IonButton,AppNavigationComponent,AppPageActionsComponent],template:`
+<ion-header><ion-toolbar><ion-title>Preferencias y privacidad</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><div class="page"><app-page-actions/>
 <h2>Qué personas quiero encontrar</h2><section class="panel">
 <label>Sexo buscado<select multiple [ngModel]="data.search().sexes" (ngModelChange)="updateSearch('sexes',$event)"><option value="woman">Mujeres</option><option value="man">Hombres</option><option value="other">Otros</option></select></label>
 <label>Orientación sexual<select [ngModel]="data.search().orientation" (ngModelChange)="updateSearch('orientation',$event)"><option value="any">Todas</option><option value="heterosexual">Heterosexual</option><option value="homosexual">Homosexual</option><option value="bisexual">Bisexual</option></select></label>

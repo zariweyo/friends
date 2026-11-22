@@ -53,3 +53,8 @@
 34. Notificaciones internas y contador de no leídas; las notificaciones a otras cuentas requieren backend.
 35. Bloquear impide contacto, cierra y archiva chats, sin borrar evidencia de denuncias. Desbloquear no reabre conversaciones.
 36. No sancionar por dejar de responder. Limitar denuncias repetidas; moderación, apelaciones y controles de seguridad reales pendientes de backend.
+
+## Interfaz y navegación — 22 noviembre 2026
+37. Interfaz mobile-first minimalista: cinco destinos en barra inferior (Buscar, Solicitudes, Chats, Avisos, Perfil) con iconos SVG y estados activos.
+38. Ajustes, Moderación y Actualizar siguen accesibles mediante acciones secundarias visibles en pantallas autenticadas.
+39. Estética lavanda/violeta/coral, tarjetas claras, formularios accesibles y soporte responsive; mantener prioridad en sencillez y lectura.

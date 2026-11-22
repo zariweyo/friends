@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { IonButton,IonContent,IonHeader,IonTitle,IonToolbar } from '@ionic/angular/standalone';
 import { DemoDataService,ReportStatus,UserRole } from '../../core/services/demo-data.service';
 import { AppNavigationComponent } from '../../shared/components/app-navigation.component';
-@Component({standalone:true,imports:[FormsModule,IonButton,IonContent,IonHeader,IonTitle,IonToolbar,AppNavigationComponent],template:`
-<ion-header><ion-toolbar><ion-title>Moderación</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><main class="page">
+import { AppPageActionsComponent } from '../../shared/components/app-page-actions.component';
+@Component({standalone:true,imports:[FormsModule,IonButton,IonContent,IonHeader,IonTitle,IonToolbar,AppNavigationComponent,AppPageActionsComponent],template:`
+<ion-header><ion-toolbar><ion-title>Moderación</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><main class="page"><app-page-actions/>
 @if(!data.canModerate()){<h2>Acceso restringido</h2><p>Solo moderadores y administradores pueden consultar denuncias.</p>}
 @else{<h2>Panel de denuncias</h2><p>Rol actual: {{data.demoRole()}} · Entorno de prueba</p>
 <label>Estado<select [(ngModel)]="filter"><option value="all">Todas</option><option value="pending">Pendientes</option><option value="reviewing">En revisión</option><option value="resolved">Resueltas</option><option value="dismissed">Desestimadas</option></select></label>
