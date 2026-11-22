@@ -1,5 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { IonFooter,IonToolbar,IonButtons,IonButton } from '@ionic/angular/standalone';
-@Component({selector:'app-navigation',standalone:true,imports:[RouterLink,IonFooter,IonToolbar,IonButtons,IonButton],template:`<ion-footer><ion-toolbar><ion-buttons slot="start"><ion-button routerLink="/discover">Buscar</ion-button><ion-button routerLink="/requests">Solicitudes</ion-button><ion-button routerLink="/chats">Chats</ion-button><ion-button routerLink="/profile">Perfil</ion-button><ion-button routerLink="/settings">Ajustes</ion-button></ion-buttons></ion-toolbar></ion-footer>`})
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { IonFooter, IonToolbar, IonButtons, IonButton } from '@ionic/angular/standalone';
+@Component({
+  selector: 'app-navigation', standalone: true,
+  imports: [RouterLink, RouterLinkActive, IonFooter, IonToolbar, IonButtons, IonButton],
+  template: `<ion-footer><ion-toolbar><ion-buttons class="nav">
+    <ion-button routerLink="/home" routerLinkActive="active">Inicio</ion-button>
+    <ion-button routerLink="/discover" routerLinkActive="active">Buscar</ion-button>
+    <ion-button routerLink="/requests" routerLinkActive="active">Solicitudes</ion-button>
+    <ion-button routerLink="/chats" routerLinkActive="active">Chats</ion-button>
+    <ion-button routerLink="/profile" routerLinkActive="active">Perfil</ion-button>
+    <ion-button routerLink="/settings" routerLinkActive="active">Ajustes</ion-button>
+  </ion-buttons></ion-toolbar></ion-footer>`,
+  styles: [`.nav { display:flex; width:100%; justify-content:space-around; overflow-x:auto; } .nav ion-button { font-size:11px; margin:0; } .active { font-weight:bold; text-decoration:underline; }`],
+})
 export class AppNavigationComponent {}

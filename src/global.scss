@@ -8,3 +8,6 @@
 @import '@ionic/angular/css/text-transformation.css';
 @import '@ionic/angular/css/flex-utils.css';
 body{font-family:system-ui,sans-serif}
+label{display:block;margin:14px 0;font-size:14px;font-weight:500}
+label>input:not([type=checkbox]),label>select{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #aaa;border-radius:8px;background:var(--ion-background-color,#fff);color:var(--ion-text-color,#222)}
+label>input[type=checkbox]{margin-right:8px}

@@ -1,0 +1,133 @@
+{
+  "cities": [
+    {
+      "id": "sevilla",
+      "name": "Sevilla"
+    },
+    {
+      "id": "dos-hermanas",
+      "name": "Dos Hermanas"
+    },
+    {
+      "id": "alcala",
+      "name": "Alcalá de Guadaíra"
+    },
+    {
+      "id": "carmona",
+      "name": "Carmona"
+    },
+    {
+      "id": "utrera",
+      "name": "Utrera"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "demo",
+      "name": "Mi perfil",
+      "age": 35,
+      "cityId": "sevilla",
+      "sex": "man",
+      "orientation": "heterosexual",
+      "photo": "https://i.pravatar.cc/320?img=12",
+      "distanceKm": 0,
+      "lastSeen": "Ahora"
+    },
+    {
+      "id": "laura",
+      "name": "Laura",
+      "age": 34,
+      "cityId": "sevilla",
+      "sex": "woman",
+      "orientation": "heterosexual",
+      "photo": "https://i.pravatar.cc/320?img=47",
+      "distanceKm": 2,
+      "lastSeen": "Hace 5 min"
+    },
+    {
+      "id": "ana",
+      "name": "Ana",
+      "age": 38,
+      "cityId": "dos-hermanas",
+      "sex": "woman",
+      "orientation": "bisexual",
+      "photo": "https://i.pravatar.cc/320?img=44",
+      "distanceKm": 12,
+      "lastSeen": "Hace 20 min"
+    },
+    {
+      "id": "marta",
+      "name": "Marta",
+      "age": 31,
+      "cityId": "alcala",
+      "sex": "woman",
+      "orientation": "heterosexual",
+      "photo": "https://i.pravatar.cc/320?img=49",
+      "distanceKm": 16,
+      "lastSeen": "Hace 1 h"
+    },
+    {
+      "id": "lucia",
+      "name": "Lucía",
+      "age": 40,
+      "cityId": "carmona",
+      "sex": "woman",
+      "orientation": "bisexual",
+      "photo": "https://i.pravatar.cc/320?img=45",
+      "distanceKm": 29,
+      "lastSeen": "Ayer"
+    },
+    {
+      "id": "pablo",
+      "name": "Pablo",
+      "age": 36,
+      "cityId": "utrera",
+      "sex": "man",
+      "orientation": "homosexual",
+      "photo": "https://i.pravatar.cc/320?img=13",
+      "distanceKm": 31,
+      "lastSeen": "Hace 2 h"
+    }
+  ],
+  "messageRequests": [
+    {
+      "id": "req-1",
+      "fromId": "ana",
+      "toId": "demo",
+      "text": "¡Hola! ¿Qué tal tu semana?",
+      "status": "pending"
+    },
+    {
+      "id": "req-2",
+      "fromId": "demo",
+      "toId": "marta",
+      "text": "Hola Marta, encantado de saludarte.",
+      "status": "pending"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "chat-1",
+      "memberIds": [
+        "demo",
+        "laura"
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "m-1",
+      "conversationId": "chat-1",
+      "fromId": "laura",
+      "text": "¡Hola! ¿Qué tal?",
+      "time": "10:30"
+    },
+    {
+      "id": "m-2",
+      "conversationId": "chat-1",
+      "fromId": "demo",
+      "text": "Muy bien, ¿y tú?",
+      "time": "10:32"
+    }
+  ]
+}

@@ -1,31 +1,30 @@
 # Friends
 
-Aplicación Ionic + Angular standalone + Capacitor. Prototipo web publicado en GitHub Pages.
+Ionic + Angular standalone + Capacitor. Prototipo de app de citas, con navegación y datos JSON ficticios.
 
-## Estado actual
+**Leer y mantener actualizado [codex.md](codex.md) en todos los cambios de decisiones o funcionalidades.** Las reglas de producto también están en [docs/product-rules.md](docs/product-rules.md).
 
-**Autenticación simulada**: el botón Entrar abre la portada y Logout vuelve al login. No hay Firebase activo ni se solicitan credenciales. El estado demo dura la sesión de la pestaña (sessionStorage). No usar este guard como seguridad real.
+## Estado
+- Login y registro fake; sin Firebase Authentication activo.
+- Pantallas de portada, búsqueda, detalle, solicitudes, chats, perfil y ajustes.
+- Colecciones demo en `src/assets/mock/collections.json`; sin Firestore, backend ni persistencia de datos de usuario.
+- Imágenes de ejemplo desde pravatar.cc; dependen de conexión a Internet.
+- Cambios en perfiles, solicitudes, filtros y chats solo en memoria.
+- Distancia y última conexión simuladas; aún no hay GPS.
+- Las restricciones de visibilidad y recepción de mensajes no son seguridad real; no usar en producción.
 
-Las carpetas de futuras funcionalidades y los modelos siguen presentes, pero las rutas visibles del prototipo son únicamente login y home.
-
-## Desarrollo local
-
+## Desarrollo
 ```bash
 npm install
 npm start
 ```
 
-## GitHub Pages (despliegue exclusivamente manual)
+## Despliegue exclusivamente manual
+1. Configurar **Settings → Pages → Source: GitHub Actions**.
+2. En **Actions → Build and deploy GitHub Pages → Run workflow**, seleccionar main.
+3. Web: https://zariweyo.github.io/friends/
 
-1. Ir a **Settings → Pages** y elegir **GitHub Actions** como fuente de publicación.
-2. Ir a **Actions → Build and deploy GitHub Pages → Run workflow** y seleccionar `main`.
-3. El workflow compila con `--base-href /friends/` y despliega el directorio `www/browser`.
-4. Una vez desplegado, la web estará en https://zariweyo.github.io/friends/
+El workflow usa `workflow_dispatch` sin triggers automáticos, compila con `--base-href /friends/` y despliega `www/browser`. El routing utiliza hashes para funcionar en Pages.
 
-No hay triggers de push, pull_request ni programación. Se utiliza routing hash para soportar recargas en GitHub Pages.
-
-## Próximas fases
-
-Configurar Firebase Authentication real con Email/Password, Google, Facebook y Apple; añadir integración nativa para Capacitor. Los futuros módulos están documentados en `docs/product-rules.md`.
-
-> GitHub Pages es alojamiento estático: no ofrece backend seguro ni autenticación por sí mismo.
+## Futuro
+Firebase Authentication (email/password, Google, Facebook, Apple), Firestore, reglas de seguridad, fotos y geolocalización real. No implementados aún.
