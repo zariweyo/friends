@@ -110,3 +110,9 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Historial adicional
 - 2026-11-22: denuncias de perfiles/mensajes, roles user/moderator/admin y panel de moderación demo.
+
+## Actualización de página — 22 noviembre 2026
+41. Botón **Actualizar** en la navegación común de las pantallas autenticadas: recarga la página completa con `window.location.reload()`. En el prototipo los cambios guardados solo en memoria (denuncias, valoraciones, mensajes, filtros) se reinician al recargar; la sesión fake de `sessionStorage` permanece.
+
+## Historial adicional
+- 2026-11-22: botón Actualizar en navegación común para recargar la web.
