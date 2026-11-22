@@ -88,3 +88,13 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Historial adicional
 - 2026-11-22: sistema de valoraciones 1-5, medias y recuentos, quién me valoró, filtros por reputación en búsqueda y recepción de mensajes.
+
+## Requisito para valorar — 22 noviembre 2026
+29. **Solo pueden valorar los dos participantes de una conversación aceptada cuando ambos han enviado al menos un mensaje en ella.** No se exige un número mayor de mensajes; la aceptación por sí sola no basta.
+30. Solicitudes pendientes, rechazadas o sin respuesta no dan derecho a valorar. La misma regla se aplica a todos los sexos.
+31. La valoración es de 1–5 estrellas con comentario opcional (máximo 500 caracteres en el boceto). La valoración es independiente del rechazo o bloqueo. Los comentarios demo se guardan en memoria.
+32. Los datos ficticios de ratings se han reducido a la pareja con conversación y respuesta recíproca, para no mostrar valoraciones incompatibles con la regla.
+33. **Pendiente de producción:** verificar el requisito en backend y garantizar que una conversación no pueda falsificarse; decidir publicación, moderación y derecho de revisión de comentarios. El prototipo no ofrece todavía un mecanismo para publicar comentarios de terceros.
+
+## Historial adicional
+- 2026-11-22: valoraciones habilitadas únicamente tras conversación aceptada con mensajes de ambas partes; comentario opcional.

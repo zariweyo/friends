@@ -36,3 +36,6 @@
 22. Exigir media mínima y opcionalmente número mínimo de valoraciones para recibir primeros mensajes.
 23. No atribuir media de cero a perfiles sin votos; los mínimos positivos los excluyen.
 24. En producción, permisos, prevención de abuso y cálculo confiable deberán implementarse en backend.
+
+25. Solo se puede valorar tras conversación aceptada en la que ambas personas hayan escrito al menos un mensaje. No basta aceptar, no vale solicitud sin respuesta o rechazada.
+26. Misma regla para todos los sexos. Comentario opcional con la valoración; pendiente moderación y visibilidad.

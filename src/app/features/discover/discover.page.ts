@@ -7,7 +7,7 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 <ion-header><ion-toolbar><ion-title>Buscar</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><div class="page">
 @if(selected()){<section class="panel"><ion-button fill="clear" (click)="selected.set(null)">← Volver</ion-button>
 <img class="large" [src]="selected()!.photo" alt="Foto de ejemplo" />
-<h2>{{selected()!.name}}, {{selected()!.age}}</h2><p>⭐ {{data.ratingStats(selected()!.id).count ? data.ratingStats(selected()!.id).average.toFixed(1) : 'Sin valoración'}} · {{data.ratingStats(selected()!.id).count}} valoraciones</p><p>Mi valoración: {{data.myRating(selected()!.id) || 'Sin valorar'}}</p><div class="stars">@for(star of [1,2,3,4,5];track star){<ion-button size="small" [fill]="data.myRating(selected()!.id)===star?'solid':'outline'" (click)="data.rate(selected()!.id,star)">{{star}} ★</ion-button>}</div><p>{{data.city(selected()!.cityId)}} · {{selected()!.distanceKm}} km · {{selected()!.lastSeen}}</p>
+<h2>{{selected()!.name}}, {{selected()!.age}}</h2><p>⭐ {{data.ratingStats(selected()!.id).count ? data.ratingStats(selected()!.id).average.toFixed(1) : 'Sin valoración'}} · {{data.ratingStats(selected()!.id).count}} valoraciones</p><p>Mi valoración: {{data.myRating(selected()!.id) || 'Sin valorar'}}</p>@if(data.canRate(selected()!.id)){<p>Puedes valorar porque ambos habéis participado en una conversación aceptada.</p><div class="stars">@for(star of [1,2,3,4,5];track star){<ion-button size="small" [fill]="data.myRating(selected()!.id)===star?'solid':'outline'" (click)="data.rate(selected()!.id,star,ratingComment)">{{star}} ★</ion-button>}</div><textarea [(ngModel)]="ratingComment" placeholder="Comentario opcional (máximo 500 caracteres)" maxlength="500"></textarea>}@else{<p><small>Podrás valorar después de una conversación aceptada en la que ambos hayáis escrito.</small></p>}<p>{{data.city(selected()!.cityId)}} · {{selected()!.distanceKm}} km · {{selected()!.lastSeen}}</p>
 <textarea [(ngModel)]="draft" placeholder="Escribe tu primer mensaje"></textarea>
 <ion-button expand="block" [disabled]="!draft.trim()" (click)="request()">Enviar primer mensaje</ion-button>
 <ion-button expand="block" fill="outline" color="medium" (click)="reject()">No es mi tipo</ion-button>
@@ -31,7 +31,7 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 }</div></ion-content><app-navigation />`,
 styles:[`.page{max-width:650px;margin:auto}.heading{display:flex;align-items:center;justify-content:space-between}.person{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ddd;padding:12px 0}.person img{width:68px;height:68px;object-fit:cover;border-radius:12px;cursor:pointer}.details{flex:1;cursor:pointer}.details p{margin:4px 0}.large{width:180px;height:180px;object-fit:cover;border-radius:16px;display:block;margin:12px auto}.panel{padding:12px;border:1px solid #ddd;border-radius:12px}textarea{width:100%;min-height:90px;padding:12px}`]})
 export class DiscoverPage{
- readonly selected=signal<Person|null>(null);readonly filters=signal(false);draft='';
+ readonly selected=signal<Person|null>(null);readonly filters=signal(false);draft='';ratingComment='';
  constructor(readonly data:DemoDataService){}
  change(key:string,value:any){this.data.search.update(s=>({...s,[key]:value}));}
  reject(){const p=this.selected();if(p)this.data.rejectPerson(p.id,'not_my_type');this.selected.set(null);}

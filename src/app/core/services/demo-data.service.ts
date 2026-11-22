@@ -15,6 +15,7 @@ export class DemoDataService {
  readonly messages = signal<Message[]>(structuredClone(collections.messages));
  readonly cities = collections.cities;
  readonly ratings = signal<Rating[]>(structuredClone(collections.ratings));
+ readonly ratingComments = signal<Record<string,string>>({});
  readonly search = signal({ sexes:['woman'],minAge:25,maxAge:45,distance:50,orientation:'any',minStars:0,minRatings:0 });
  readonly incoming = signal({ sexes:['woman','man'],minAge:25,maxAge:55,distance:100,minStars:0,minRatings:0 });
  readonly visible = signal(true);
@@ -31,9 +32,17 @@ export class DemoDataService {
   const values=this.ratings().filter(r=>r.toId===id);
   return {average:values.length?values.reduce((sum,r)=>sum+r.stars,0)/values.length:0,count:values.length};
  }
+ canRate(id:string):boolean{
+  const conversation=this.chats().find(c=>c.memberIds.includes('demo')&&c.memberIds.includes(id));
+  if(!conversation)return false;
+  const messages=this.messages().filter(m=>m.conversationId===conversation.id);
+  return messages.some(m=>m.fromId==='demo')&&messages.some(m=>m.fromId===id);
+ }
  myRating(id:string):number{return this.ratings().find(r=>r.fromId==='demo'&&r.toId===id)?.stars??0;}
- rate(id:string,stars:number):void{
+ rate(id:string,stars:number,comment=''):void{
+  if(!this.canRate(id))return;
   if(id==='demo'||!this.person(id)||!Number.isInteger(stars)||stars<1||stars>5)return;
+  this.ratingComments.update(v=>({...v,[id]:comment.trim().slice(0,500)}));
   this.ratings.update(all=>{
    const current=all.find(r=>r.fromId==='demo'&&r.toId===id);
    return current?all.map(r=>r===current?{...r,stars}:r):[...all,{id:'rating-'+Date.now(),fromId:'demo',toId:id,stars}];
