@@ -1,7 +1,34 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { IonContent,IonHeader,IonToolbar,IonTitle,IonItem,IonInput,IonButton,IonText } from '@ionic/angular/standalone';
-import { AuthService,SocialProvider } from '../../core/services/auth.service';
-@Component({standalone:true,imports:[FormsModule,RouterLink,IonContent,IonHeader,IonToolbar,IonTitle,IonItem,IonInput,IonButton,IonText],template:`<ion-header><ion-toolbar><ion-title>Friends</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><div class="auth"><h1>Bienvenido</h1><p>Conoce personas. Empieza conversaciones.</p><form (ngSubmit)="login()"><ion-item><ion-input label="Correo electrónico" labelPlacement="stacked" name="email" type="email" required [(ngModel)]="email" /></ion-item><ion-item><ion-input label="Contraseña" labelPlacement="stacked" name="password" type="password" required [(ngModel)]="password" /></ion-item><ion-button expand="block" type="submit" [disabled]="busy()">Entrar</ion-button></form><p>O continúa con</p><ion-button expand="block" fill="outline" (click)="social('google')" [disabled]="busy()">Google</ion-button><ion-button expand="block" fill="outline" (click)="social('facebook')" [disabled]="busy()">Facebook</ion-button><ion-button expand="block" fill="outline" (click)="social('apple')" [disabled]="busy()">Apple</ion-button>@if(error()){<ion-text color="danger"><p>{{error()}}</p></ion-text>}<p>¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p></div></ion-content>`,styles:[`.auth{max-width:420px;margin:3rem auto}ion-button{margin-top:12px}`]})
-export class LoginPage {email='';password='';readonly busy=signal(false);readonly error=signal('');constructor(private auth:AuthService){}async login(){await this.run(()=>this.auth.login(this.email,this.password));}async social(p:SocialProvider){await this.run(()=>this.auth.socialLogin(p));}private async run(fn:()=>Promise<void>){this.busy.set(true);this.error.set('');try{await fn();}catch(e){this.error.set(e instanceof Error?e.message:'Error de acceso');}finally{this.busy.set(false);}}}
+import { IonButton, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { AuthService } from '../../core/services/auth.service';
+
+@Component({
+  standalone: true,
+  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar],
+  template: `
+    <ion-header><ion-toolbar><ion-title>Friends</ion-title></ion-toolbar></ion-header>
+    <ion-content class="ion-padding">
+      <main class="welcome">
+        <h1>Friends</h1>
+        <p>Conoce personas. Empieza conversaciones.</p>
+        <ion-button expand="block" [disabled]="busy()" (click)="login()">Entrar</ion-button>
+        <small>Acceso de demostración: sin registro ni autenticación real.</small>
+      </main>
+    </ion-content>
+  `,
+  styles: [`
+    .welcome { max-width: 420px; margin: 18vh auto 0; text-align: center; }
+    h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    p { color: var(--ion-color-medium); margin-bottom: 2rem; }
+    small { display: block; margin-top: 1.5rem; color: var(--ion-color-medium); }
+  `],
+})
+export class LoginPage {
+  readonly busy = signal(false);
+  constructor(private readonly auth: AuthService) {}
+  async login(): Promise<void> {
+    this.busy.set(true);
+    try { await this.auth.login(); }
+    finally { this.busy.set(false); }
+  }
+}
