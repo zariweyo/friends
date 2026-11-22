@@ -71,7 +71,7 @@ export class DemoDataService {
  canModerate():boolean{return this.demoRole()==='moderator'||this.demoRole()==='admin';}
  setRole(id:string,role:UserRole):void{
   if(this.demoRole()!=='admin'||id==='demo'||!this.person(id))return;
-  this.roles.update(v=>v.map(r=>r.userId===id?{...r,role}:[...v]).filter((r,i,a)=>a.findIndex(x=>x.userId===r.userId)===i));
+  this.roles.update(v=>v.some(r=>r.userId===id)?v.map(r=>r.userId===id?{...r,role}:r):[...v,{userId:id,role}]);
  }
  report(targetId:string,reason:ReportReason,details:string,messageId:string|null=null):boolean{
   this.reportError.set('');

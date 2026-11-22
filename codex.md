@@ -116,3 +116,6 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Historial adicional
 - 2026-11-22: botón Actualizar en navegación común para recargar la web.
+
+## Corrección de compilación — 22 noviembre 2026
+- Corregido `setRole()` en `DemoDataService`: antes devolvía una unión de objeto y array desde `map()`, provocando TS2322/TS2339 en GitHub Actions run 45019803144. Ahora actualiza el elemento existente o agrega un único registro si falta. Pendiente confirmar mediante nuevo build manual.
