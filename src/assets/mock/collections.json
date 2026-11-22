@@ -144,5 +144,44 @@
       "stars": 4
     }
   ],
-  "ratingComments": []
+  "ratingComments": [],
+  "roles": [
+    {
+      "userId": "demo",
+      "role": "admin"
+    },
+    {
+      "userId": "laura",
+      "role": "user"
+    },
+    {
+      "userId": "ana",
+      "role": "user"
+    },
+    {
+      "userId": "marta",
+      "role": "moderator"
+    },
+    {
+      "userId": "lucia",
+      "role": "user"
+    },
+    {
+      "userId": "pablo",
+      "role": "user"
+    }
+  ],
+  "reports": [
+    {
+      "id": "report-demo-1",
+      "reporterId": "ana",
+      "targetId": "pablo",
+      "messageId": null,
+      "reason": "inappropriate",
+      "details": "Ejemplo de denuncia para probar la revisión.",
+      "status": "pending",
+      "reviewedBy": null,
+      "resolution": null
+    }
+  ]
 }

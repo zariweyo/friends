@@ -39,3 +39,9 @@
 
 25. Solo se puede valorar tras conversación aceptada en la que ambas personas hayan escrito al menos un mensaje. No basta aceptar, no vale solicitud sin respuesta o rechazada.
 26. Misma regla para todos los sexos. Comentario opcional con la valoración; pendiente moderación y visibilidad.
+
+## Denuncias y roles — 22 noviembre 2026
+27. Roles: user, moderator, admin. Solo moderator/admin revisan denuncias; solo admin gestiona roles.
+28. Denunciar perfiles y mensajes; motivos tipificados y descripción. Denuncias separadas de las valoraciones, sin penalización automática.
+29. Estados de denuncia: pending, reviewing, resolved, dismissed. Registrar revisor y resolución.
+30. Prototipo sin autorización real: proteger roles y denuncias en backend antes de producción; privacidad, auditoría, sanciones y apelaciones pendientes.

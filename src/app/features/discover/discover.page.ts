@@ -11,7 +11,7 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 <textarea [(ngModel)]="draft" placeholder="Escribe tu primer mensaje"></textarea>
 <ion-button expand="block" [disabled]="!draft.trim()" (click)="request()">Enviar primer mensaje</ion-button>
 <ion-button expand="block" fill="outline" color="medium" (click)="reject()">No es mi tipo</ion-button>
-<ion-button color="danger" fill="clear" (click)="data.toggleBlocked(selected()!.id);selected.set(null)">Bloquear</ion-button></section>}
+<ion-button color="danger" fill="clear" (click)="data.toggleBlocked(selected()!.id);selected.set(null)">Bloquear</ion-button><ion-button color="medium" fill="outline" (click)="reporting.set(!reporting())">Denunciar perfil</ion-button>@if(reporting()){<section class="panel"><label>Motivo<select [(ngModel)]="reportReason"><option value="harassment">Acoso</option><option value="inappropriate">Conducta inapropiada</option><option value="spam">Spam</option><option value="fake_profile">Perfil falso</option><option value="other">Otro</option></select></label><textarea [(ngModel)]="reportDetails" maxlength="1000" placeholder="Describe lo ocurrido"></textarea><ion-button (click)="submitReport()">Enviar denuncia</ion-button></section>}</section>}
 @else {
 <div class="heading"><h2>Personas cerca de ti</h2><ion-button fill="outline" (click)="filters.set(!filters())">Filtros</ion-button></div>
 @if(filters()){<section class="panel"><h3>Filtros de búsqueda</h3>
@@ -31,9 +31,10 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 }</div></ion-content><app-navigation />`,
 styles:[`.page{max-width:650px;margin:auto}.heading{display:flex;align-items:center;justify-content:space-between}.person{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ddd;padding:12px 0}.person img{width:68px;height:68px;object-fit:cover;border-radius:12px;cursor:pointer}.details{flex:1;cursor:pointer}.details p{margin:4px 0}.large{width:180px;height:180px;object-fit:cover;border-radius:16px;display:block;margin:12px auto}.panel{padding:12px;border:1px solid #ddd;border-radius:12px}textarea{width:100%;min-height:90px;padding:12px}`]})
 export class DiscoverPage{
- readonly selected=signal<Person|null>(null);readonly filters=signal(false);draft='';ratingComment='';
+ readonly selected=signal<Person|null>(null);readonly filters=signal(false);readonly reporting=signal(false);draft='';ratingComment='';reportReason:'harassment'|'inappropriate'|'spam'|'fake_profile'|'other'='inappropriate';reportDetails='';
  constructor(readonly data:DemoDataService){}
  change(key:string,value:any){this.data.search.update(s=>({...s,[key]:value}));}
+ submitReport(){const p=this.selected();if(!p)return;if(this.data.report(p.id,this.reportReason,this.reportDetails)){this.reporting.set(false);this.reportDetails='';alert('Denuncia enviada para revisión (demo).');}else alert(this.data.reportError());}
  reject(){const p=this.selected();if(p)this.data.rejectPerson(p.id,'not_my_type');this.selected.set(null);}
  request(){const p=this.selected();if(!p)return;const ok=this.data.request(p.id,this.draft);if(ok){this.draft='';this.selected.set(null);}else alert('No se puede enviar otra solicitud a este perfil.');}
 }

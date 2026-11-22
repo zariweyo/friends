@@ -98,3 +98,15 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 
 ## Historial adicional
 - 2026-11-22: valoraciones habilitadas únicamente tras conversación aceptada con mensajes de ambas partes; comentario opcional.
+
+## Roles y denuncias — 22 noviembre 2026
+34. Roles iniciales: `user`, `moderator`, `admin`. `user` usa la app y denuncia; `moderator` revisa/resuelve/desestima denuncias; `admin` también asigna roles.
+35. Denuncias independientes de las estrellas: reportar no cambia automáticamente la reputación ni implica sanción automática.
+36. Se pueden denunciar perfiles desde Buscar y mensajes recibidos desde Conversaciones. Motivos: acoso, conducta inapropiada, spam, perfil falso, otro; detalles de hasta 1000 caracteres.
+37. Colecciones demo JSON `roles` y `reports`. Las denuncias contienen denunciante, denunciado, mensaje opcional, motivo, descripción, estado, revisor y resolución.
+38. Panel `#/moderation`: moderadores/admin ven denuncias, cambian estado y registran nota; solo admin cambia roles. En Mi perfil hay selector para simular rol.
+39. **Seguridad pendiente**: el prototipo es exclusivamente frontend; el rol demo es manipulable y no ofrece seguridad real. En producción, asignación de roles, lectura de denuncias, evidencias y resoluciones deben validarse en backend con reglas Firestore y claims/autorización confiables. Nunca confiar en un rol escrito por el cliente.
+40. Pendiente: sanciones, apelaciones, historial de auditoría, adjuntos, límites de denuncias, notificaciones y retención de evidencias. Proteger identidad de denunciantes y datos de mensajes.
+
+## Historial adicional
+- 2026-11-22: denuncias de perfiles/mensajes, roles user/moderator/admin y panel de moderación demo.

@@ -5,6 +5,10 @@ export type Request = (typeof collections.messageRequests)[number];
 export type Chat = (typeof collections.conversations)[number];
 export type Message = (typeof collections.messages)[number];
 export type Rating = (typeof collections.ratings)[number];
+export type UserRole = 'admin'|'moderator'|'user';
+export type ReportReason = 'harassment'|'inappropriate'|'spam'|'fake_profile'|'other';
+export type ReportStatus = 'pending'|'reviewing'|'resolved'|'dismissed';
+export interface Report {id:string;reporterId:string;targetId:string;messageId:string|null;reason:ReportReason;details:string;status:ReportStatus;reviewedBy:string|null;resolution:string|null;}
 export type RejectionReason = 'not_my_type' | 'message_rejected';
 
 @Injectable({ providedIn: 'root' })
@@ -14,6 +18,10 @@ export class DemoDataService {
  readonly chats = signal<Chat[]>(structuredClone(collections.conversations));
  readonly messages = signal<Message[]>(structuredClone(collections.messages));
  readonly cities = collections.cities;
+ readonly roles = signal<{userId:string;role:UserRole}[]>(collections.roles.map(r=>({userId:r.userId,role:r.role as UserRole})));
+ readonly reports = signal<Report[]>(collections.reports.map(r=>({...r,reason:r.reason as ReportReason,status:r.status as ReportStatus})));
+ readonly demoRole = signal<UserRole>('admin');
+ readonly reportError = signal('');
  readonly ratings = signal<Rating[]>(structuredClone(collections.ratings));
  readonly ratingComments = signal<Record<string,string>>({});
  readonly search = signal({ sexes:['woman'],minAge:25,maxAge:45,distance:50,orientation:'any',minStars:0,minRatings:0 });
@@ -58,6 +66,24 @@ export class DemoDataService {
   return !!p&&!this.blocked().includes(id)&&!this.rejectedByMe()[id]&&
    f.sexes.includes(p.sex)&&p.age>=f.minAge&&p.age<=f.maxAge&&p.distanceKm<=f.distance&&
    this.meetsRating(id,f.minStars,f.minRatings);
+ }
+ role(id:string):UserRole{return id==='demo'?this.demoRole():this.roles().find(r=>r.userId===id)?.role??'user';}
+ canModerate():boolean{return this.demoRole()==='moderator'||this.demoRole()==='admin';}
+ setRole(id:string,role:UserRole):void{
+  if(this.demoRole()!=='admin'||id==='demo'||!this.person(id))return;
+  this.roles.update(v=>v.map(r=>r.userId===id?{...r,role}:[...v]).filter((r,i,a)=>a.findIndex(x=>x.userId===r.userId)===i));
+ }
+ report(targetId:string,reason:ReportReason,details:string,messageId:string|null=null):boolean{
+  this.reportError.set('');
+  if(targetId==='demo'||!this.person(targetId)){this.reportError.set('No se puede denunciar este perfil.');return false;}
+  if(messageId&&!this.messages().some(m=>m.id===messageId&&m.fromId===targetId)){this.reportError.set('Mensaje no válido.');return false;}
+  if(!details.trim()){this.reportError.set('Describe brevemente lo sucedido.');return false;}
+  this.reports.update(v=>[...v,{id:'report-'+Date.now()+'-'+v.length,reporterId:'demo',targetId,messageId,reason,details:details.trim().slice(0,1000),status:'pending',reviewedBy:null,resolution:null}]);
+  return true;
+ }
+ reviewReport(id:string,status:ReportStatus,resolution:string):void{
+  if(!this.canModerate()||!['reviewing','resolved','dismissed'].includes(status))return;
+  this.reports.update(v=>v.map(r=>r.id===id?{...r,status,reviewedBy:'demo',resolution:resolution.trim().slice(0,1000)||null}:r));
  }
  city(id:string){return this.cities.find(c=>c.id===id)?.name??id;}
  person(id:string){return this.people().find(p=>p.id===id);}

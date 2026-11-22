@@ -5,7 +5,7 @@ import { DemoDataService } from '../../core/services/demo-data.service';
 import { AppNavigationComponent } from '../../shared/components/app-navigation.component';
 @Component({standalone:true,imports:[FormsModule,IonButton,IonContent,IonHeader,IonTitle,IonToolbar,AppNavigationComponent],template:`
 <ion-header><ion-toolbar><ion-title>Mi perfil</ion-title></ion-toolbar></ion-header><ion-content class="ion-padding"><div class="page">
-<h2>Perfil minimalista</h2><p>Solo una fotografía. Sin biografía extensa.</p>
+<h2>Perfil minimalista</h2><p>Rol de prueba: <strong>{{data.demoRole()}}</strong></p><label>Simular rol<select [ngModel]="data.demoRole()" (ngModelChange)="data.demoRole.set($event)"><option value="user">user</option><option value="moderator">moderator</option><option value="admin">admin</option></select></label><p><small>Este selector existe solo para probar pantallas. No representa autorización real.</small></p><p>Solo una fotografía. Sin biografía extensa.</p>
 <img class="photo" [src]="photo" alt="Foto de perfil de prueba" />
 <label>URL de la foto<input [(ngModel)]="photo" /></label><label>Nombre<input [(ngModel)]="name" /></label>
 <label>Edad<input type="number" min="18" [(ngModel)]="age" /></label>

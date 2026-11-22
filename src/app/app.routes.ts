@@ -8,6 +8,7 @@ export const appRoutes:Routes=[
 {path:'discover',canActivate:[authGuard],loadComponent:()=>import('./features/discover/discover.page').then(m=>m.DiscoverPage)},
 {path:'requests',canActivate:[authGuard],loadComponent:()=>import('./features/requests/requests.page').then(m=>m.RequestsPage)},
 {path:'chats',canActivate:[authGuard],loadComponent:()=>import('./features/chats/chats.page').then(m=>m.ChatsPage)},
+{path:'moderation',canActivate:[authGuard],loadComponent:()=>import('./features/moderation/moderation.page').then(m=>m.ModerationPage)},
 {path:'profile',canActivate:[authGuard],loadComponent:()=>import('./features/profile/profile.page').then(m=>m.ProfilePage)},
 {path:'settings',canActivate:[authGuard],loadComponent:()=>import('./features/settings/settings.page').then(m=>m.SettingsPage)},
 {path:'**',redirectTo:'discover'}];
