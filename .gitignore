@@ -1,0 +1,12 @@
+node_modules/
+.angular/
+www/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+android/
+ios/
+*.log
