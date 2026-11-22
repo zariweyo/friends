@@ -28,3 +28,6 @@ El workflow usa `workflow_dispatch` sin triggers automáticos, compila con `--ba
 
 ## Futuro
 Firebase Authentication (email/password, Google, Facebook, Apple), Firestore, reglas de seguridad, fotos y geolocalización real. No implementados aún.
+
+## Valoraciones demo
+La colección `ratings` del JSON permite valorar 1–5 estrellas, consultar media y recuento, ver quién te valoró y filtrar búsqueda y solicitudes entrantes. Solo en memoria; sin backend ni medidas antifraude.

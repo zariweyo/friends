@@ -27,3 +27,12 @@
 15. Rechazos privados y direccionales: al rechazar por "No es mi tipo" o por primer mensaje, esa persona deja de salir en mi búsqueda. Si alguien me rechaza, también desaparece de mis resultados. Evitar ciclos de reaparición.
 16. El botón "Dar otra oportunidad" de los filtros de Buscar permite volver a ver perfiles que **yo** rechacé; no levanta bloqueos ni rechazos recibidos.
 17. En el prototipo no hay backend, por lo que el rechazo remoto solo puede simularse y el estado se pierde al recargar.
+
+## Valoraciones — 22 noviembre 2026
+18. Valoración de perfiles entre 1 y 5 estrellas, independiente de rechazar o contactar.
+19. Una valoración por emisor y destinatario; se puede cambiar. Nunca autovaloración.
+20. Mostrar media y número de votos, y en Mi perfil quién me valoró.
+21. Filtrar búsqueda por media mínima y número mínimo de valoraciones.
+22. Exigir media mínima y opcionalmente número mínimo de valoraciones para recibir primeros mensajes.
+23. No atribuir media de cero a perfiles sin votos; los mínimos positivos los excluyen.
+24. En producción, permisos, prevención de abuso y cálculo confiable deberán implementarse en backend.

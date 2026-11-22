@@ -75,3 +75,16 @@ Colecciones demo: `profiles`, `messageRequests`, `conversations`, `messages`, `c
 - 2026-11-22: corregida dependencia Ionic a ^8.7.0; usuario confirma build.
 - 2026-11-22: boceto de pantallas y datos JSON demo; Firestore pospuesto.
 - 2026-11-22: Buscar pasa a home; filtros en Buscar y Conversaciones; rechazo múltiple, descarte por tipo/mensaje, exclusión de rechazados y opción Dar otra oportunidad.
+
+## Valoraciones por estrellas — 22 noviembre 2026
+21. Un usuario puede valorar a otro con un número entero de **1 a 5 estrellas**, independientemente de que le envíe un mensaje, acepte, rechace o marque "No es mi tipo". La valoración no elimina el rechazo.
+22. **Una valoración por pareja direccional** `fromId -> toId`; el usuario puede modificar la suya, no acumular votos. No se permite autovaloración.
+23. Se muestran **media aritmética** y **número de valoraciones**. Los perfiles sin votos no tienen una media real: se representan como "sin valorar", no como 0 estrellas. Los filtros de mínimo positivo de estrellas los excluyen.
+24. Buscar incorpora filtros independientes de **media mínima de estrellas** y **número mínimo de valoraciones**; también se reflejan en Ajustes.
+25. En Mi perfil se muestra el listado de **quién me valoró y con cuántas estrellas**, además de la media y el total.
+26. Los filtros de recepción de mensajes incorporan **media mínima del remitente** y **número mínimo de valoraciones**; ejemplo: 3 estrellas. En demo se filtran las solicitudes entrantes; en producción se validará el requisito antes de enviar.
+27. Los votos demo viven en la colección JSON `ratings` (`id,fromId,toId,stars`). Cambios solo en memoria. Las medias se calculan, no se guardan en perfiles.
+28. Pendiente: decidir si las valoraciones son públicas, cómo evitar votaciones abusivas, quién puede valorar, cómo moderar y cómo auditar fraude; antes de producción se necesitarán reglas de seguridad y validación backend.
+
+## Historial adicional
+- 2026-11-22: sistema de valoraciones 1-5, medias y recuentos, quién me valoró, filtros por reputación en búsqueda y recepción de mensajes.

@@ -11,7 +11,7 @@ import { AppNavigationComponent } from '../../shared/components/app-navigation.c
 <label>Edad<input type="number" min="18" [(ngModel)]="age" /></label>
 <label>Sexo<select [(ngModel)]="sex"><option value="woman">Mujer</option><option value="man">Hombre</option><option value="other">Otro</option></select></label>
 <label>Población (GPS simulado)<select [(ngModel)]="cityId">@for(c of data.cities;track c.id){<option [value]="c.id">{{c.name}}</option>}</select></label>
-<ion-button expand="block" [disabled]="!name.trim() || age < 18" (click)="save()">Guardar cambios (demo)</ion-button></div></ion-content><app-navigation />`,
+<ion-button expand="block" [disabled]="!name.trim() || age < 18" (click)="save()">Guardar cambios (demo)</ion-button><h2>Mis valoraciones</h2><p>⭐ {{data.ratingStats('demo').count ? data.ratingStats('demo').average.toFixed(1) : 'Sin valorar'}} de 5 · {{data.ratingStats('demo').count}} valoraciones recibidas</p>@for(r of data.ratingsReceived();track r.id){<div class="rating"><strong>{{data.person(r.fromId)?.name ?? 'Usuario'}}</strong> · {{r.stars}} ★</div>}@if(!data.ratingsReceived().length){<p>Todavía no has recibido valoraciones.</p>}</div></ion-content><app-navigation />`,
 styles:[`.page{max-width:500px;margin:auto}.photo{display:block;width:150px;height:150px;object-fit:cover;border-radius:16px;margin:20px auto}`]})
 export class ProfilePage {
  name='';age=25;sex='woman';cityId='sevilla';photo='';

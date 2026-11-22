@@ -129,5 +129,79 @@
       "text": "Muy bien, ¿y tú?",
       "time": "10:32"
     }
+  ],
+  "ratings": [
+    {
+      "id": "rating-1",
+      "fromId": "laura",
+      "toId": "demo",
+      "stars": 5
+    },
+    {
+      "id": "rating-2",
+      "fromId": "ana",
+      "toId": "demo",
+      "stars": 4
+    },
+    {
+      "id": "rating-3",
+      "fromId": "marta",
+      "toId": "demo",
+      "stars": 3
+    },
+    {
+      "id": "rating-4",
+      "fromId": "demo",
+      "toId": "laura",
+      "stars": 4
+    },
+    {
+      "id": "rating-5",
+      "fromId": "ana",
+      "toId": "laura",
+      "stars": 5
+    },
+    {
+      "id": "rating-6",
+      "fromId": "marta",
+      "toId": "laura",
+      "stars": 4
+    },
+    {
+      "id": "rating-7",
+      "fromId": "lucia",
+      "toId": "ana",
+      "stars": 3
+    },
+    {
+      "id": "rating-8",
+      "fromId": "pablo",
+      "toId": "ana",
+      "stars": 4
+    },
+    {
+      "id": "rating-9",
+      "fromId": "laura",
+      "toId": "marta",
+      "stars": 5
+    },
+    {
+      "id": "rating-10",
+      "fromId": "ana",
+      "toId": "marta",
+      "stars": 5
+    },
+    {
+      "id": "rating-11",
+      "fromId": "marta",
+      "toId": "lucia",
+      "stars": 2
+    },
+    {
+      "id": "rating-12",
+      "fromId": "laura",
+      "toId": "pablo",
+      "stars": 4
+    }
   ]
 }
